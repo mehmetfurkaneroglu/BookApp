@@ -23,7 +23,7 @@ class NewBookViewModel @Inject constructor(private val repository: Repository): 
     val booksLoading = MutableLiveData<Boolean>()
 
     init {
-
+        getNewBooks()
     }
 
     val bookAdapter = BookAdapter().apply {

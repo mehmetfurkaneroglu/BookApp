@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.eroglu.bookapp.databinding.FragmentBookBinding
 import com.eroglu.bookapp.viewmodel.NewBookViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,6 +30,7 @@ class BookFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentBookBinding.inflate(inflater, container, false)
+//        binding.setVariable(BR.viewModel,viewModel)
         val view = binding.root
         return view
     }
@@ -37,17 +39,21 @@ class BookFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = this
 
+        binding.bookListRecyclerView.adapter = viewModel.bookAdapter
+        binding.bookListRecyclerView.layoutManager = LinearLayoutManager(context)
+        //  XML'den de verebiliyoruz --> app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
         observeLiveData()
 
     }
 
     fun observeLiveData() {
-        viewModel.books.observe(viewLifecycleOwner, Observer { book ->
-            book?.let {
-                binding.bookListRecyclerView.visibility = View.VISIBLE
-//                newBookAdapter.updateBookList(book)
-            }
-        })
+//        viewModel.books.observe(viewLifecycleOwner, Observer { book ->
+//            book?.let {
+//                binding.bookListRecyclerView.visibility = View.VISIBLE
+////                    viewModel.bookAdapter.bookList = it
+//            }
+//        })
         viewModel.booksError.observe(viewLifecycleOwner, Observer { error ->
             error?.let {
                 if (it) {
@@ -61,7 +67,7 @@ class BookFragment : Fragment() {
             loading?.let {
                 if (it) {
                     binding.bookLoading.visibility = View.VISIBLE
-                    binding.bookListRecyclerView.visibility = View.GONE
+//                    binding.bookListRecyclerView.visibility = View.GONE
                     binding.bookError.visibility = View.GONE
                 } else {
                     binding.bookLoading.visibility = View.GONE

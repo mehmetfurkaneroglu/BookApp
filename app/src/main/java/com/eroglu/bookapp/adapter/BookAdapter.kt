@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.eroglu.bookapp.databinding.BookItemBinding
 import com.eroglu.bookapp.model.NewBookResult
 
@@ -41,9 +42,16 @@ class BookAdapter: RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
-        val book = bookList[position]
-        holder.binding.bookName.text = book?.title
-        holder.binding.bookAuthor.text = book?.yazar
+        holder.binding.bookName.text = bookList[position]?.yayin
+        holder.binding.bookAuthor.text = bookList[position]?.yazar
+
+        Glide
+            .with(holder.binding.root.context)
+            .load(bookList[position]?.image)
+            .centerCrop()
+//            .placeholder(R.drawable.loading_spinner) // Resim yüklenene kadar gösterilecek olan.
+            .into(holder.binding.bookImage)
+
     }
 
     fun updateBookList(newBookList: List<NewBookResult?>) {
