@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.DetailFragment">
+
+        <ImageView
+            android:id="@+id/bookImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="32dp"
+            android:layout_alignParentTop="true"
+            android:src="@mipmap/ic_launcher"
+            android:scaleType="fitCenter"
+            android:minHeight="200dp"/>
+
+        <TextView
+            android:id="@+id/bookName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bookImage"
+            android:text="Book Name"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="4dp"/>
+
+        <TextView
+            android:id="@+id/bookAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bookName"
+            android:text="Book Author"
+            android:textSize="24dp"
+            android:textStyle="italic"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="4dp"/>
+
+        <TextView
+            android:id="@+id/bookUrl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bookAuthor"
+            android:text="Book Url"
+            android:textSize="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="4dp"/>
+
+        <TextView
+            android:id="@+id/bookOldPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bookUrl"
+            android:text="Book Old Price"
+            android:textSize="16dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="4dp"/>
+
+        <TextView
+            android:id="@+id/bookNewPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bookOldPrice"
+            android:text="Book New Price"
+            android:textSize="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="4dp"/>
+
+    </RelativeLayout>
+</layout>

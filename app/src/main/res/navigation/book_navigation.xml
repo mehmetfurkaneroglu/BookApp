@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/book_navigation"
+    app:startDestination="@id/bookFragment">
+
+    <fragment
+        android:id="@+id/bookFragment"
+        android:name="com.eroglu.bookapp.view.BookFragment"
+        android:label="BookFragment" >
+        <action
+            android:id="@+id/action_bookFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.eroglu.bookapp.view.DetailFragment"
+        android:label="DetailFragment" >
+        <action
+            android:id="@+id/action_detailFragment_to_bookFragment"
+            app:destination="@id/bookFragment" />
+        <argument
+            android:name="bookUuid"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+</navigation>
